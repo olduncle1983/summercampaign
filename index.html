@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鹅选清凉节整体规划</title>
+<style>
+  :root{
+    --c-deep:#0a4d68;
+    --c-mid:#088395;
+    --c-teal:#05bfdb;
+    --c-ice:#a0e9ff;
+    --c-bg:#f3fbff;
+    --c-card:#ffffff;
+    --c-ink:#0f3a4a;
+    --c-sub:#5a7886;
+    --c-line:#d6eef6;
+    --c-amber:#ff8c42;
+    --c-amber-bg:#fff3e9;
+    --shadow:0 8px 28px rgba(8,131,149,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(1200px 500px at 80% -10%, #cdf3ff 0%, transparent 60%),
+      radial-gradient(900px 400px at 0% 10%, #e3f8ff 0%, transparent 55%),
+      var(--c-bg);
+    color:var(--c-ink);
+    line-height:1.7;
+    padding:0 0 60px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ===== Header ===== */
+  header.hero{
+    background:linear-gradient(135deg,var(--c-deep) 0%,var(--c-mid) 55%,var(--c-teal) 100%);
+    color:#fff;border-radius:0 0 32px 32px;padding:46px 0 38px;position:relative;overflow:hidden;
+    box-shadow:0 12px 40px rgba(8,131,149,.28);
+  }
+  header.hero::after{
+    content:"❄";position:absolute;right:40px;top:10px;font-size:160px;opacity:.10;line-height:1;
+  }
+  .hero .tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    padding:5px 14px;border-radius:999px;font-size:13px;letter-spacing:1px;margin-bottom:14px;backdrop-filter:blur(4px)}
+  .hero h1{font-size:40px;font-weight:800;letter-spacing:1px;margin-bottom:10px}
+  .hero h1 span{color:var(--c-ice)}
+  .hero .sub{font-size:16px;opacity:.92;max-width:760px}
+  .hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+  .hero .meta .pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+    padding:6px 14px;border-radius:10px;font-size:13.5px}
+  .hero .meta .pill b{color:var(--c-ice)}
+
+  /* ===== Flow (three steps) ===== */
+  .section-title{display:flex;align-items:center;gap:12px;margin:46px 0 22px}
+  .section-title .num{background:linear-gradient(135deg,var(--c-mid),var(--c-teal));color:#fff;
+    width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:800;font-size:18px;
+    box-shadow:0 6px 16px rgba(5,191,219,.35)}
+  .section-title h2{font-size:24px;font-weight:800}
+  .section-title .desc{font-size:13.5px;color:var(--c-sub);margin-left:4px}
+
+  .flow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;position:relative}
+  .flow .step{background:var(--c-card);border-radius:18px;padding:22px 20px;box-shadow:var(--shadow);
+    border:1px solid var(--c-line);position:relative;overflow:hidden}
+  .flow .step::before{content:"";position:absolute;left:0;top:0;height:5px;width:100%;
+    background:linear-gradient(90deg,var(--c-mid),var(--c-teal))}
+  .flow .step .s-no{font-size:13px;color:var(--c-mid);font-weight:700;letter-spacing:1px}
+  .flow .step h3{font-size:20px;margin:6px 0 8px}
+  .flow .step p{font-size:13.5px;color:var(--c-sub)}
+  .flow .step .perf{margin-top:14px;background:#f0fbff;border:1px dashed var(--c-teal);border-radius:10px;
+    padding:10px 12px;color:var(--c-deep)}
+  .perf{font-size:12.8px;background:#f0fbff;border:1px dashed var(--c-teal);border-radius:10px;
+    padding:10px 12px;color:var(--c-deep)}
+  .perf b{color:var(--c-amber)}
+  .perf.amber{background:var(--c-amber-bg);border:1px dashed var(--c-amber);color:#a8500b}
+  .perf.amber b{color:var(--c-amber)}
+  .perf.callout{background:linear-gradient(180deg,#ff8a3d,#ff6f1c);border:none;border-radius:12px;
+    padding:14px 18px;color:#fff;font-size:15.5px;font-weight:600;line-height:1.55;
+    box-shadow:0 6px 16px rgba(255,111,28,.28);text-align:center;letter-spacing:.2px}
+  .perf.callout b{color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.12);font-weight:700}
+  .flow .arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:22px;color:var(--c-teal);z-index:2}
+
+  /* ===== Cards ===== */
+  .grid{display:grid;gap:18px}
+  .card{background:var(--c-card);border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--c-line);overflow:hidden}
+  .card .c-head{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--c-line);
+    background:linear-gradient(180deg,#f6fdff,#fff)}
+  .card .c-head .ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:20px;
+    background:linear-gradient(135deg,var(--c-ice),var(--c-teal));color:#fff;flex:0 0 auto}
+  .card .c-head .ttl{font-size:18px;font-weight:800}
+  .card .c-head .lab{font-size:12px;color:var(--c-mid);font-weight:700;letter-spacing:.5px}
+  .card .c-head .owner{margin-left:auto;font-size:12px;color:var(--c-sub);background:#eef8fc;border:1px solid var(--c-line);
+    padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .card .c-body{padding:18px 20px}
+  .card .c-body p{font-size:14px;color:#2c5566;margin-bottom:8px}
+  .lead{font-size:14.5px;color:var(--c-ink);font-weight:600;margin-bottom:12px!important}
+
+  ul.clean{list-style:none;display:flex;flex-direction:column;gap:9px}
+  ul.clean li{position:relative;padding-left:24px;font-size:13.8px;color:#345b6b}
+  ul.clean li::before{content:"";position:absolute;left:6px;top:9px;width:8px;height:8px;border-radius:50%;
+    background:var(--c-teal)}
+  ul.clean li b{color:var(--c-deep)}
+
+  .chip{display:inline-block;background:#eafaff;color:var(--c-mid);border:1px solid var(--c-line);
+    border-radius:8px;padding:3px 10px;font-size:12.5px;margin:2px 4px 2px 0;font-weight:600}
+  .chip.amber{background:var(--c-amber-bg);color:var(--c-amber);border-color:#ffe0c7}
+
+  /* KV gallery */
+  .kv-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+  .kv-item{display:flex;flex-direction:column;border-radius:12px;overflow:hidden;
+    background:#f6fdff;border:1px solid var(--c-line);text-decoration:none;color:inherit;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+  .kv-item:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(8,131,149,.16);border-color:var(--c-teal)}
+  .kv-img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:#e3f4fa}
+  .card-img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:#e3f4fa;border-radius:10px;margin-top:10px;border:1px solid var(--c-line)}
+  .kv-item.kv-main{grid-column:span 2}
+  .kv-cap{padding:8px 10px 9px}
+  .kv-name{font-size:13.5px;font-weight:700;color:var(--c-deep);line-height:1.35}
+  .kv-meta{font-size:11.5px;color:var(--c-sub);margin-top:2px}
+  @media(max-width:560px){.kv-gallery{grid-template-columns:1fr}.kv-item.kv-main{grid-column:span 1}}
+
+  /* mini table */
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px;border-radius:12px;overflow:hidden}
+  th{background:var(--c-deep);color:#fff;font-weight:700;padding:9px 12px;text-align:left;font-size:12.5px}
+  td{padding:9px 12px;border-bottom:1px solid var(--c-line);color:#345b6b;vertical-align:top}
+  tr:nth-child(even) td{background:#f7fcfe}
+  td .place{font-weight:700;color:var(--c-deep)}
+  td .date{color:var(--c-amber);font-weight:700;white-space:nowrap}
+  .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:700}
+  .badge.open{background:#e7f9ee;color:#1f9d57}
+  .badge.wait{background:#fff3e9;color:var(--c-amber)}
+
+  .sub-block{margin-top:14px;background:#f6fdff;border:1px solid var(--c-line);border-radius:12px;padding:12px 14px}
+  .sub-block h4{font-size:14px;color:var(--c-deep);margin-bottom:7px;display:flex;align-items:center;gap:7px}
+
+  .todo-note{margin-top:12px;background:var(--c-amber-bg);border-left:4px solid var(--c-amber);
+    border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px;color:#a85419}
+  .todo-note b{color:var(--c-amber)}
+
+  .two{grid-template-columns:1fr 1fr}
+  @media(max-width:880px){.flow,.two{grid-template-columns:1fr}.flow .arrow{display:none}.hero h1{font-size:30px}}
+
+  footer{margin-top:50px;text-align:center;color:var(--c-sub);font-size:12.5px}
+  .footer-line{height:3px;width:80px;background:linear-gradient(90deg,var(--c-teal),var(--c-ice));border-radius:3px;margin:0 auto 14px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">❄ 清凉节</span>
+    <h1>鹅选清凉节<span>整体规划</span></h1>
+    <div class="meta">
+      <span class="pill">⏱ 周期：<b>7.6 — 8.23</b></span>
+      <span class="pill">🧭 主线：<b>发现品 · 拓到品 · 经营出爆品</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===== 具体规划 ===== -->
+  <div class="section-title">
+    <div class="num">①</div>
+    <h2>具体规划</h2>
+  </div>
+
+  <div class="flow">
+    <div class="step">
+      <h3>发现品</h3>
+      <p>手动整合<b>视频号小店带货（友望平台）+ 抖音小店（蝉妈妈平台）</b>历史同期商品数据，以及 <b>ADQ 近期投放数据</b>；通过 AI 清洗出爆款 <b>SPU、品牌</b>进行品类趋势洞察，输出<b>赛道关键节奏</b>，<b>子行业分渠道拓品差异</b>，以及<b>商品/品牌拓品榜单</b>。</p>
+      <div class="perf"><b>详情咨询 @wingsdli(李颖)</b></div>
+    </div>
+    <div class="arrow" style="left:33.0%">➜</div>
+    <div class="step">
+      <h3>行渠拓品</h3>
+      <p>基于爆品清单，联动重点服务商以 <b>KPI 二级/三级行业维度</b>进行拓品。</p>
+      <div class="perf"><b>详情咨询各渠道接口</b></div>
+    </div>
+  </div>
+
+  <!-- ===== 2.3 内容力/四力 ===== -->
+  <div class="section-title">
+    <div class="num">②</div>
+    <h2>经营出爆品：围绕四力的弹药</h2>
+  </div>
+
+  <div class="grid">
+
+    <!-- 内容力 · 活动 KV -->
+    <div class="card">
+      <div class="c-head">
+        <div class="ic">🖼️</div>
+        <div>
+          <div class="lab">2.3.0 内容力</div>
+          <div class="ttl">活动 KV：统一的活动视觉强化活动感知</div>
+        </div>
+      </div>
+      <div class="c-body">
+        <p class="lead">本次提供清凉主题直播间贴片、商品框、创意物料（大图、九图、竖版视频、横版视频背景）可供商家嵌套商品及素材。第一期通过线下方式提供，后期已沟通妙思排期进行自动生成。</p>
+        <div class="kv-gallery">
+          <a class="kv-item kv-main" href="assets/kv_main.jpg" target="_blank">
+            <img class="kv-img" src="assets/kv_main.jpg" alt="活动主视觉">
+            <div class="kv-cap">
+              <div class="kv-name">活动主视觉</div>
+              <div class="kv-meta">线下直播主会场 · 1280×720</div>
+            </div>
+          </a>
+          <a class="kv-item" href="assets/kv_live_sticker.jpg" target="_blank">
+            <img class="kv-img" src="assets/kv_live_sticker.jpg" alt="直播间主题贴纸">
+            <div class="kv-cap">
+              <div class="kv-name">直播间主题贴纸</div>
+              <div class="kv-meta">清爽穿搭 · 竖版 9:16</div>
+            </div>
+          </a>
+          <a class="kv-item" href="assets/kv_goods_frame.jpg" target="_blank">
+            <img class="kv-img" src="assets/kv_goods_frame.jpg" alt="商品外框">
+            <div class="kv-cap">
+              <div class="kv-name">商品外框</div>
+              <div class="kv-meta">夏日清凉特惠 · 1:1</div>
+            </div>
+          </a>
+          <a class="kv-item" href="assets/kv_friend_merchant.jpg" target="_blank">
+            <img class="kv-img" src="assets/kv_friend_merchant.jpg" alt="朋友圈九图（商家）">
+            <div class="kv-cap">
+              <div class="kv-name">朋友圈九图（商家）</div>
+              <div class="kv-meta">9 宫格满减主推 · 1:1</div>
+            </div>
+          </a>
+          <a class="kv-item" href="assets/kv_friend_talent.jpg" target="_blank">
+            <img class="kv-img" src="assets/kv_friend_talent.jpg" alt="朋友圈九图（达人）">
+            <div class="kv-cap">
+              <div class="kv-name">朋友圈九图（达人）</div>
+              <div class="kv-meta">达人种草九宫格 · 1:1</div>
+            </div>
+          </a>
+        </div>
+        <div class="perf amber" style="margin-top:12px"><b>详情咨询 vikihuang（黄晶晶）</b></div>
+      </div>
+    </div>
+
+    <!-- 2.3.1 大场 -->
+    <div class="card">
+      <div class="c-head">
+        <div class="ic">🎪</div>
+        <div>
+          <div class="lab">2.3.1 内容力 · 大场</div>
+          <div class="ttl">线下大场活动</div>
+        </div>
+        <span class="owner">@张爽</span>
+      </div>
+      <div class="c-body">
+        <table>
+          <thead>
+            <tr><th style="width:120px">场景</th><th style="width:110px">时间</th><th>活动名称 / 介绍</th><th style="width:90px">报名</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>展会</td><td><span class="date">7.2–7.4</span></td><td><span class="place">深圳食博会</span>　食品专场展（食播+渔播+茶播）</td><td><span class="badge open">12 席</span></td></tr>
+            <tr><td>展会</td><td><span class="date">7.23–7.25</span></td><td><span class="place">上海百货展</span>　行一综合展，类目多样</td><td><span class="badge open">10 席</span></td></tr>
+            <tr><td>展会</td><td><span class="date">7.28–7.29</span></td><td><span class="place">杭州商江湖视频号爆品展</span>　商家自播 + 达人撮合</td><td><span class="badge wait">待开启</span></td></tr>
+            <tr><td>展会</td><td><span class="date">8.13–8.15</span></td><td><span class="place">杭州全食展</span>　食品专场展，中冰展夏季概念</td><td><span class="badge wait">待开启</span></td></tr>
+            <tr><td>创新场景</td><td><span class="date">7月下旬</span></td><td><span class="place">海边清凉（深圳）</span>　白天海边室内 + 晚间青春暑期海边市集 & 音乐会</td><td><span class="badge wait">待开启</span></td></tr>
+            <tr><td>创新场景</td><td><span class="date">8月</span></td><td><span class="place">山区清凉（沪杭）</span>　露营地、夏季运动健康场景</td><td><span class="badge wait">待开启</span></td></tr>
+          </tbody>
+        </table>
+        <div class="sub-block">
+          <h4>🛠 行业老师需要做什么</h4>
+          <ul class="clean">
+            <li><b>线下（展会 / 创新场景）</b>：播前 报名发布 → 行业提报 → 素材储备 → 实地直播设备 & 人货场升级辅导；播后 绿幕拉长活动周期</li>
+          </ul>
+        </div>
+        <div class="todo-note">
+          <b>📦 物料：</b>提供清凉主题直播间贴片、商品框、创意物料（大图 / 九图 / 竖版 / 横版视频背景）。
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.3.2 KOC -->
+    <div class="card">
+      <div class="c-head">
+        <div class="ic">📣</div>
+        <div>
+          <div class="lab">2.3.2 内容力 · KOC 团长</div>
+          <div class="ttl">KOC 加热</div>
+        </div>
+        <span class="owner">@戴昕余</span>
+      </div>
+      <div class="c-body">
+        <div class="sub-block">
+          <h4>✅ 如何判定能做 KOC 加热</h4>
+          <ul class="clean">
+            <li>方法一：竞媒是否涉及 KOC 投放</li>
+            <li>方法二：短视频 GMV 占比高、投放占比低</li>
+            <li>方法三：投放 <b>ROI&lt;2.5</b>、支持团长代投、客单价 &lt;100 元、接受佣金 5%+5%</li>
+          </ul>
+        </div>
+        <div class="sub-block">
+          <h4>📋 货盘合作要点</h4>
+          <span class="chip">链路：KOC 挂车 / KOC 直播</span>
+          <span class="chip">佣金：5+5 模式</span>
+          <span class="chip amber">冷启动 ROI ≥ 1.8</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.3.3 达播 -->
+    <div class="card">
+      <div class="c-head">
+        <div class="ic">🎬</div>
+        <div>
+          <div class="lab">2.3.3 内容力 · 达播</div>
+          <div class="ttl">达人清凉周活动</div>
+        </div>
+        <span class="owner">@叶嘉琪</span>
+      </div>
+      <div class="c-body">
+        <div class="sub-block">
+          <h4>活动规则</h4>
+          <p style="font-size:13.3px">活动时间：<b>8 月 10 日那一周</b></p>
+          <p style="font-size:13.3px">参与达人：食品饮料垂类日播型达人 + 全行业头部内容型达人</p>
+          <p style="font-size:13.3px">参与门槛：新客需累计消耗满 10 万；达播专场需按 GSV 3%-5% 准备投流费，混场按 2%-3% 标准投放（食品饮料参考）。</p>
+          <p style="font-size:13.3px;margin-top:6px">额外福利：</p>
+          <p style="font-size:13.3px">肖像授权书：达人肖像授权生成商品推广图，用于朋友圈广告投放</p>
+          <p style="font-size:13.3px">预热视频：达人前置预热短视频录制及提及</p>
+          <p style="font-size:13.3px">清凉节冲榜：设达人带货榜，TOP 达人给予公关宣传、节点合作绿通等福利</p>
+        </div>
+        <div class="sub-block">
+          <h4>🏆 货盘更易被选中的条件</h4>
+          <span class="chip">① 热招品牌</span>
+          <span class="chip">② 三好店铺（热销 / 服务 / 品牌好店）</span>
+          <span class="chip">③ 达人专场 / 混场 ADQ 投流费支持</span>
+        </div>
+        <div class="todo-note">
+          <b>📅 货盘 deadline：</b>需要在 <b>7月15日之前</b>给到达播周的货盘，后续开启撮合沟通流程。<br>
+          如想联动食品饮料头部垂达（例如馋嘴汇）可联系 <b>kayye（叶嘉琪）</b>。<br>
+          欢迎其他中心拉动更多头达一并加入联动，具体安排可联系 <b>kayye（叶嘉琪）</b>。
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.3.4 -->
+    <div class="grid">
+      <!-- 投放力 -->
+      <div class="card">
+        <div class="c-head">
+          <div class="ic">🚀</div>
+          <div>
+            <div class="lab">2.3.4 投放力</div>
+            <div class="ttl">勤奋度 Skill 自查</div>
+          </div>
+          <span class="owner">@李颖</span>
+        </div>
+        <div class="c-body">
+          <img class="card-img" src="assets/image.png" alt="勤奋度 Skill 自查示意">
+          <div class="perf" style="margin-top:10px">关于勤奋度自查 Skill 详情咨询 <b>wingsdli（李颖）</b></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.3.5 -->
+    <div class="grid">
+      <!-- 品牌力 -->
+      <div class="card">
+        <div class="c-head">
+          <div class="ic">✨</div>
+          <div>
+            <div class="lab">2.3.5 品牌力</div>
+            <div class="ttl">清凉节互选话题页</div>
+          </div>
+          <span class="owner">@邓一维</span>
+        </div>
+        <div class="c-body">
+          <div class="sub-block">
+            <h4>🎒 资源包内容（超会玩的夏天 · 夏日清凉季特约伙伴 20w）</h4>
+            <ul class="clean">
+              <li>话题页内<b>商品卡</b>可跳转微信小店</li>
+              <li>品牌<b>互选视频坑位</b> ×1</li>
+              <li>话题<b>小旗子</b> + 左侧三个话题页资源</li>
+              <li>额外预估 PV：<b>100 万</b>（暂不承诺）</li>
+            </ul>
+          </div>
+          <div class="todo-note">
+            <b>🚪 门槛：</b>单客户 20 万+；食品饮料需<b>共凑够 200 万</b>方可申请资源。<br>
+            <b>📥 行动：</b>欢迎更多行业客户一起凑单。
+          </div>
+          <div class="perf callout" style="margin-top:10px">如想参与 / 使用清凉节任意模块，可咨询相关接口人，或统一询问项目负责人 <b>vectordeng（邓一维）</b></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<footer>
+  <div class="footer-line"></div>
+</footer>
+
+</div>
+</body>
+</html>
